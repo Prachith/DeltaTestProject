@@ -1,0 +1,90 @@
+﻿@model LibraryManagement.Models.Book
+
+@{
+    ViewBag.Title = "Edit Books";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ENROLLMENT</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="../../Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/passwordscheck.js"></script>
+    <link href="~/Scripts/passwordscheck.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+    @using (Html.BeginForm("Edit", "Books", FormMethod.Post))
+    {
+        <p class="container register">
+        <p class="row">
+        <p class="col-md-3 register-left">
+            <h3>Manage Books</h3>
+        <p>
+            Delta Library Management System
+        </p>
+        </p>
+        <p class="col-md-9 register-right">
+        <p class="tab-content" id="myTabContent">
+        <p class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <h3 class="register-heading"></h3>
+        <p class="row register-form">
+        <p class="col-md-6">
+        <p class="form-group">
+            <a>Name of the Book</a>
+                                        @Html.TextBoxFor(e => e.BookName, new { @class = "form-control", placeholder = "Name of the Book ", value=Model.BookName })
+                                        @Html.ValidationMessageFor(e => e.BookName)
+        </p>
+        <p class="form-group">
+            <a>Barcode</a>
+                                        @Html.TextBoxFor(e => e.Barcode, new { @class = "form-control", placeholder = "Barcode ", value = Model.Barcode, @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(e => e.Barcode)
+        </p>
+        <p class="form-group">
+            <a>Stock On Hand</a>
+                                        @Html.TextBoxFor(e => e.StockOnHand, new { @class = "form-control", placeholder = "Stock On Hand ", value = Model.StockOnHand})
+            <span id="result"></span>
+                                        @Html.ValidationMessageFor(e => e.StockOnHand)
+        </p>
+        <p class="form-group">
+            <a>Rental Cost</a>
+                                        @Html.TextBoxFor(e => e.RentalCost, new { @class = "form-control", placeholder = "Rental Cost ", value = Model.RentalCost })
+            <span id="result"></span>
+                                        @Html.ValidationMessageFor(e => e.RentalCost)
+        </p>
+        <p class="form-group">
+            <a>Is Deleted</a>
+                                        @Html.CheckBoxFor(e => e.IsDeleted, new { @class = "form-check", placeholder = "Is Deleted ", value = Model.IsDeleted })
+                                        @Html.ValidationMessageFor(e => e.IsDeleted)
+        </p>
+        </p>
+        <p class="col-md-6">
+            <input type="submit" class="btnRegister" value="Edit Book" />
+        </p>
+        </p>
+        </p>
+        </p>
+        </p>
+        </p>
+        </p>
+        <script type="text/javascript">
+            $(function () {
+                var msg = '@ViewData["result"]';
+                if (msg == '1') {
+                    alert("User Details Inserted Successfully");
+                    window.location.href = '@Url.Action("Index", "Boooks")';
+                }
+            });
+        </script>
+    }
+
+</body>
+</html>

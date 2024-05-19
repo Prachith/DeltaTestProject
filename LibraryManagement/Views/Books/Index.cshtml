@@ -1,0 +1,113 @@
+﻿@model LibraryManagement.Models.Book
+
+@{
+    ViewBag.Title = "Manage Books";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ENROLLMENT</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="../../Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/passwordscheck.js"></script>
+    <link href="~/Scripts/passwordscheck.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+    @using (Html.BeginForm("AddBooks", "Books", FormMethod.Post))
+    {
+        <p class="container register">
+        <p class="row">
+        <p class="col-md-3 register-left">
+            <h3>Manage Books</h3>
+        <p>
+            Delta Library Management System
+        </p>
+        </p>
+        <p class="col-md-9 register-right">
+            <p class="tab-content" id="myTabContent">
+                <p class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading"></h3>
+                        <p class="row register-form">
+                            <p class="col-md-6">
+                                <p class="form-group">
+                                        @Html.TextBoxFor(e => e.BookName, new { @class = "form-control", placeholder = "Name of the Book *" })
+                                        @Html.ValidationMessageFor(e => e.BookName)
+                                </p>
+                                <p class="form-group">
+                                        @Html.TextBoxFor(e => e.Barcode, new { @class = "form-control", placeholder = "Barcode *" })
+                                        @Html.ValidationMessageFor(e => e.Barcode)
+                                </p>
+                                <p class="form-group">
+                                        <label>Stock On Hand *</label>
+                                        @Html.TextBoxFor(e => e.StockOnHand, new { @class = "form-control", placeholder = "Stock On Hand *" })
+                                        <span id="result"></span>
+                                        @Html.ValidationMessageFor(e => e.StockOnHand)
+                                </p>
+                                <p class="form-group">
+                                        <label>Rental Cost*</label>
+                                        @Html.TextBoxFor(e => e.RentalCost, new { @class = "form-control", placeholder = "Rental Cost *" })
+                                        <span id="result"></span>
+                                        @Html.ValidationMessageFor(e => e.RentalCost)
+                                </p>
+                            </p>
+                            <p class="col-md-6">
+                                <input type="submit" class="btnRegister" value="Add New Book" />
+                            </p>
+                        </p>
+                    </p>
+                </p>
+            </p>
+        </p>
+        </p>
+    }
+    @if (Model.Books != null)
+    {
+        if (Model.Books.Count > 0)
+        {
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Barcode</th>
+                        <th>Book Name</th>
+                        <th>Sock On Hand</th>
+                        <th>Rental Cost</th>
+                        <th>Is Deleted</th>
+                    </tr>
+                    @foreach (var item in Model.Books)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@Html.DisplayFor(modelitem => item.Id) </td>
+                            <td>@Html.DisplayFor(modelitem => item.Barcode)</td>
+                            <td>@Html.DisplayFor(modelitem => item.BookName)</td>
+                            <td>@Html.DisplayFor(modelitem => item.StockOnHand)</td>
+                            <td>@Html.DisplayFor(modelitem => item.RentalCost)</td>
+                            <td>@Html.DisplayFor(modelitem => item.IsDeleted)</td>    
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new {id=item.Id})|
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })                                
+                            </td>
+                        </tr>
+                    }
+
+                </thead>
+            </table>
+        }
+        else
+        {
+            <b>No Details Found.</b>
+        }
+    }
+</body>
+</html>

@@ -1,0 +1,14 @@
+C:\Users\prach\source\repos\LibraryManagement\CommonData\bin\Debug\net6.0\CommonData.deps.json
+C:\Users\prach\source\repos\LibraryManagement\CommonData\bin\Debug\net6.0\CommonData.runtimeconfig.json
+C:\Users\prach\source\repos\LibraryManagement\CommonData\bin\Debug\net6.0\CommonData.dll
+C:\Users\prach\source\repos\LibraryManagement\CommonData\bin\Debug\net6.0\CommonData.pdb
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.csproj.AssemblyReference.cache
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.AssemblyInfoInputs.cache
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.AssemblyInfo.cs
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.csproj.CoreCompileInputs.cache
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.dll
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\refint\CommonData.dll
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.pdb
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\CommonData.genruntimeconfig.cache
+C:\Users\prach\source\repos\LibraryManagement\CommonData\obj\Debug\net6.0\ref\CommonData.dll

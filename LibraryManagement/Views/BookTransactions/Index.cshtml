@@ -1,0 +1,113 @@
+﻿@model LibraryManagement.Models.BookTransactionModel
+
+@{
+    ViewBag.Title = "Book Transactions";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ENROLLMENT</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="../../Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/passwordscheck.js"></script>
+    <link href="~/Scripts/passwordscheck.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>    
+</head>
+<body>
+
+    @using (Html.BeginForm("Index", "BookTransactions", FormMethod.Post))
+    {
+        <p class="container register">
+        <p class="row">
+        <p class="col-md-3 register-left">
+            <h3>Welcome</h3>
+        <p>
+            Delta Library Management System
+        </p>
+        </p>
+        <p class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="../BookTransactions/Index" role="tab" aria-controls="home" aria-selected="true">Borrow</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="../BookTransactions/Return" role="tab" aria-controls="profile" aria-selected="false">Return</a>
+                </li>
+            </ul>
+        <p class="tab-content" id="myTabContent">
+        <p class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <h3 class="register-heading">Borrow Books</h3>
+        <p class="row register-form">
+        <p class="col-md-6">
+            <p class="form-group">                    
+                    @Html.DropDownListFor(e => e.BookId, Model.Books,"Select a Book", new { id = "bookSelect", @class = "form-control"} )
+            </p>
+
+        <p class="col-md-6">
+            <input type="submit" class="btnRegister" value="Add Book" />
+        </p>
+        </p>
+        </p>
+        </p>
+        </p>
+        </p>
+        </p>
+        </p>
+    }
+
+    @if (Model.Transactions != null)
+    {
+        if (Model.Transactions.Count > 0)
+        {
+            <table id="transactionsTable" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>BookId</th>
+                        <th>Book Name</th>
+                        <th>Quantity</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Transactions)
+                    {                    
+                        <tr>
+                            <td></td>
+                            <td>@Html.DisplayFor(modelitem => item.BookId) </td>
+                            <td>@Html.DisplayFor(modelitem => item.BookName)</td>
+                            <td>@Html.DisplayFor(modelitem => item.Quantity)</td>                            
+                            <td>                                
+                                @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
+                            </td>
+                        </tr>
+                    }
+                <tbody>                
+            </table>
+        }
+        else
+        {
+            <b>No Details Found.</b>
+        }
+    }
+
+    @using (Html.BeginForm("Complete", "BookTransactions", FormMethod.Post))
+    {
+        <p class="col-md-6">
+            <input type="submit" class="btnComplete" value="Complete Transaction" />
+        </p>
+    }
+    
+    @if (!string.IsNullOrEmpty(ViewBag.message))
+    {
+        <p>@ViewBag.message</p>
+    }
+
+</body>
+</html>
